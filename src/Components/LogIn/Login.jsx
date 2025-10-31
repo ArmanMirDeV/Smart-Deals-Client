@@ -1,15 +1,37 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router"; // ✅ use react-router-dom
 import { FcGoogle } from "react-icons/fc";
+import AuthProvider from "../../Context/AuthProvider";
+
 
 const Login = () => {
-  const handleLogin = (e) => {
+  const { signinUser, signInWithGoogle } = useContext(AuthProvider);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // redirect path after successful login
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // handle login logic here
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    try {
+      await signinUser(email, password);
+      navigate(from, { replace: true }); // redirect to the previous page or home
+    } catch (err) {
+      console.error("❌ Login failed:", err.message);
+    }
   };
 
-  const handleGoogleLogin = () => {
-    // handle Google login logic here
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithGoogle();
+      navigate(from, { replace: true });
+    } catch (err) {
+      console.error("❌ Google login failed:", err.message);
+    }
   };
 
   return (
@@ -28,6 +50,7 @@ const Login = () => {
           </Link>
         </p>
 
+        {/* Login form */}
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm mb-1">Email</label>
@@ -75,7 +98,7 @@ const Login = () => {
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
 
-        {/* Google sign-in */}
+        {/* Google Sign-in */}
         <button
           onClick={handleGoogleLogin}
           className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center space-x-2 hover:bg-gray-50"
