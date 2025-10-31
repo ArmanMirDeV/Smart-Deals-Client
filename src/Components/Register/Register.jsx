@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Register = () => {
+
+
+  const { signInWithGoogle } = use(AuthContext); 
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then(result => {
+      console.log(result);
+      
+      })
+      .catch(error => {
+        console.log(error);
+        
+      })
+  }
+
+
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md border border-gray-200">
@@ -69,7 +87,7 @@ const Register = () => {
             <hr className="flex-grow border-gray-300" />
           </div>
 
-          <button className="w-full border border-gray-300 py-2 rounded-md flex items-center justify-center hover:bg-gray-100 transition">
+          <button onClick={handleGoogleSignIn} className="w-full border border-gray-300 py-2 rounded-md flex items-center justify-center hover:bg-gray-100 transition">
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
               alt="Google"
