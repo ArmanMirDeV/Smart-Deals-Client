@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import { Navigate, useLocation } from "react-router";
-import AuthProvider from "../../Context/AuthProvider";
+import { Navigate, useLocation } from "react-router"; // ✅ use react-router-dom
+import { AuthContext } from "../../Context/AuthContext"; // ✅ import the context, not provider
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthProvider);
+  const { user, loading } = useContext(AuthContext); // ✅ correct usage
   const location = useLocation();
 
-  // optional: show loading spinner while checking auth state
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -15,12 +14,12 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  // if user not logged in, redirect to login
   if (!user) {
+    // redirect to login, and preserve the current page path
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // else show the protected page
+  // if user is logged in, render the page
   return children;
 };
 

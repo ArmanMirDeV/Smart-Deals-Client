@@ -1,15 +1,13 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router"; // ✅ use react-router-dom
+import { Link, useLocation, useNavigate } from "react-router"; // ✅ should be react-router-dom
 import { FcGoogle } from "react-icons/fc";
-import AuthProvider from "../../Context/AuthProvider";
-
+import { AuthContext } from "../../Context/AuthContext"; // ✅ correct context import
 
 const Login = () => {
-  const { signinUser, signInWithGoogle } = useContext(AuthProvider);
+  const { signInUser, signInWithGoogle } = useContext(AuthContext); // ✅ use the context object, not the provider
   const navigate = useNavigate();
   const location = useLocation();
 
-  // redirect path after successful login
   const from = location.state?.from?.pathname || "/";
 
   const handleLogin = async (e) => {
@@ -18,8 +16,8 @@ const Login = () => {
     const password = e.target.password.value;
 
     try {
-      await signinUser(email, password);
-      navigate(from, { replace: true }); // redirect to the previous page or home
+      await signInUser(email, password);
+      navigate(from, { replace: true });
     } catch (err) {
       console.error("❌ Login failed:", err.message);
     }

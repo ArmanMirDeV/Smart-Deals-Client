@@ -92,7 +92,10 @@ const Navbar = () => {
             {/* Sign Out Button */}
             <button
               onClick={signOutUser}
-              className="btn border border-red-500 text-red-500 hover:bg-red-100"
+              className="btn rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 
+              text-white p-3 
+              hover:from-indigo-600 hover:to-purple-600
+              transition-all duration-300"
             >
               Sign Out
             </button>
