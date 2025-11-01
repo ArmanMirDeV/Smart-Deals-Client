@@ -1,28 +1,46 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router"; 
 import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
 
+  const linkStyle = ({ isActive }) =>
+    `relative font-medium transition duration-300 px-3 py-2
+     ${
+       isActive
+         ? "text-purple-600 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-purple-500 after:to-indigo-500 after:rounded-full"
+         : "text-gray-700 hover:text-purple-600"
+     }`;
+
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className={linkStyle}>
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/allProducts">All Products</NavLink>
+        <NavLink to="/allProducts" className={linkStyle}>
+          All Products
+        </NavLink>
       </li>
       {user && (
         <>
           <li>
-            <NavLink to="/myProducts">My Products</NavLink>
+            <NavLink to="/myProducts" className={linkStyle}>
+              My Products
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/myBids">My Bids</NavLink>
+            <NavLink to="/myBids" className={linkStyle}>
+              My Bids
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/createProduct">Create Product</NavLink>
+            <NavLink to="/createProduct" className={linkStyle}>
+              Create Product
+            </NavLink>
           </li>
         </>
       )}
@@ -30,7 +48,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="navbar-start">
         {/* Mobile Dropdown */}
         <div className="dropdown">
@@ -70,11 +88,10 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      {/* Right Side: User Info or Auth Buttons */}
+      {/* Right Side */}
       <div className="navbar-end space-x-3">
         {user ? (
           <div className="flex items-center gap-3">
-            {/* User Photo */}
             {user.photoURL && (
               <img
                 src={
@@ -85,11 +102,9 @@ const Navbar = () => {
                 className="w-10 h-10 rounded-full border border-gray-300 object-cover"
               />
             )}
-            {/* Display Name */}
             <span className="font-medium text-gray-700 hidden sm:inline">
               {user.displayName || "User"}
             </span>
-            {/* Sign Out Button */}
             <button
               onClick={signOutUser}
               className="btn rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 

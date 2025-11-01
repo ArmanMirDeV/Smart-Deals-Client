@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router"; // ✅ should be react-router-dom
+import { Link, useLocation, useNavigate } from "react-router"; 
 import { FcGoogle } from "react-icons/fc";
-import { AuthContext } from "../../Context/AuthContext"; // ✅ correct context import
+import { AuthContext } from "../../Context/AuthContext";
 
 const Login = () => {
-  const { signInUser, signInWithGoogle } = useContext(AuthContext); // ✅ use the context object, not the provider
+  const { signInUser, signInWithGoogle } = useContext(AuthContext); 
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,7 +19,7 @@ const Login = () => {
       await signInUser(email, password);
       navigate(from, { replace: true });
     } catch (err) {
-      console.error("❌ Login failed:", err.message);
+      console.error(" Login failed:", err.message);
     }
   };
 
@@ -28,7 +28,7 @@ const Login = () => {
       await signInWithGoogle();
       navigate(from, { replace: true });
     } catch (err) {
-      console.error("❌ Google login failed:", err.message);
+      console.error(" Google login failed:", err.message);
     }
   };
 
