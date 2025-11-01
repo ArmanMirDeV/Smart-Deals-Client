@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Product = ({ product }) => {
-  const { title, price_min, price_max, image, status, condition } = product;
+  const {_id, title, price_min, price_max, image, status, condition } = product;
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 max-w-xs h-[350px] flex flex-col">
@@ -40,9 +41,9 @@ const Product = ({ product }) => {
         </div>
 
         {/* Button */}
-        <button className="w-full border border-purple-500 text-purple-600 text-sm font-medium py-2 rounded-md hover:bg-purple-50 transition">
+        <Link to={`/productDetails/${_id}`} className=" btn w-full border border-purple-500 text-purple-600 text-sm font-medium py-2 rounded-md hover:bg-purple-50 hover:cursor-pointer transition">
           View Details
-              </button>
+              </Link>
               
       </div>
     </div>
