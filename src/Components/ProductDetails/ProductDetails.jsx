@@ -53,7 +53,7 @@ const ProductDetails = () => {
     <div>
       <div className="max-w-6xl mx-auto py-10 px-6 bg-gray-50 min-h-screen">
         <Link
-          to="/products"
+          to="/allProducts"
           className="text-gray-600 text-sm hover:text-gray-800 inline-flex items-center mb-4"
         >
           <span className="mr-1">←</span> Back To Products
