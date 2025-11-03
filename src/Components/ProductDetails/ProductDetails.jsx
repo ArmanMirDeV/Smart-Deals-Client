@@ -7,7 +7,7 @@ const ProductDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bids, setBids] = useState([]);
 
-  console.log(bids);
+  // console.log(bids);
   
   const {
     _id,
@@ -38,7 +38,7 @@ const ProductDetails = () => {
     fetch(`http://localhost:3000/products/bids/${_id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("Bids for this product", data);
+        // console.log("Bids for this product", data);
         data.sort((a, b) => b.bid_price - a.bid_price);
         setBids(data);
       })
@@ -226,7 +226,7 @@ const ProductDetails = () => {
                         </div>
                       </td>
 
-                      {/* Seller Column */}
+                      {/* Buyer Column */}
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
                           <img

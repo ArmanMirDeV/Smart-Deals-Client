@@ -96,7 +96,7 @@ const BidModal = ({ isOpen, onClose, product, onBidSuccess }) => {
               </label>
               <input
                 type="url"
-                readOnly
+               
                 name="imageUrl"
                 defaultValue={user.photoURL}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-purple-400 transition"
