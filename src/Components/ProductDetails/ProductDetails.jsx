@@ -7,6 +7,8 @@ const ProductDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bids, setBids] = useState([]);
 
+  console.log(bids);
+  
   const {
     _id,
     title,
@@ -37,6 +39,7 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("Bids for this product", data);
+        data.sort((a, b) => b.bid_price - a.bid_price);
         setBids(data);
       })
       .catch((err) => console.error("Error fetching bids:", err));
@@ -192,7 +195,7 @@ const ProductDetails = () => {
                   <tr>
                     <th className="py-3 px-4 text-left w-[70px]">SL No</th>
                     <th className="py-3 px-4 text-left w-[220px]">Product</th>
-                    <th className="py-3 px-4 text-left w-[240px]">Seller</th>
+                    <th className="py-3 px-4 text-left w-[240px]">Buyer</th>
                     <th className="py-3 px-4 text-left w-[100px]">Bid Price</th>
                     <th className="py-3 px-4 text-left w-[160px]">Actions</th>
                   </tr>
@@ -227,16 +230,16 @@ const ProductDetails = () => {
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
                           <img
-                            src={seller_image}
-                            alt={seller_name}
+                            src={bid.buyer_image}
+                            alt={bid.buyer_name}
                             className="w-8 h-8 rounded-full object-cover bg-gray-100"
                           />
                           <div>
                             <p className="font-medium text-gray-800">
-                              {seller_name}
+                              {bid.buyer_name}
                             </p>
                             <p className="text-xs text-gray-500">
-                              {email}
+                              {bid.buyer_email}
                             </p>
                           </div>
                         </div>
