@@ -36,7 +36,7 @@ const Product = ({ product }) => {
 
           {/* Price */}
           <p className="text-purple-600 font-semibold mb-3">
-            ${price_min} - {price_max}
+            ${price_min} - {price_max *1.2 }
           </p>
         </div>
 

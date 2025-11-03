@@ -210,16 +210,14 @@ const ProductDetails = () => {
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
                           <img
-                            src={bid.productImage}
-                            alt={bid.productName}
+                            src={image}
+                            alt={title}
                             className="w-10 h-10 rounded-md object-cover bg-gray-100"
                           />
                           <div>
-                            <p className="font-medium text-gray-800">
-                              {bid.productName}
-                            </p>
+                            <p className="font-medium text-gray-800">{title}</p>
                             <p className="text-xs text-gray-500">
-                              ${bid.productPrice}
+                              ${price_min}
                             </p>
                           </div>
                         </div>
@@ -229,16 +227,16 @@ const ProductDetails = () => {
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
                           <img
-                            src={bid.sellerImage}
-                            alt={bid.sellerName}
+                            src={seller_image}
+                            alt={seller_name}
                             className="w-8 h-8 rounded-full object-cover bg-gray-100"
                           />
                           <div>
                             <p className="font-medium text-gray-800">
-                              {bid.sellerName}
+                              {seller_name}
                             </p>
                             <p className="text-xs text-gray-500">
-                              {bid.sellerEmail}
+                              {email}
                             </p>
                           </div>
                         </div>

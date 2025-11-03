@@ -1,5 +1,6 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -46,16 +47,18 @@ const Banner = () => {
 
         {/* Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mt-6">
-          <button
-            className="
+          <Link to='/allProducts'>
+            <button
+              className="
               bg-gradient-to-r from-purple-600 to-indigo-600 
               text-white px-6 py-2 rounded-md font-medium 
               hover:from-indigo-600 hover:to-purple-600 
               transition-all duration-300 shadow-md hover:shadow-lg
             "
-          >
-            Watch All Products
-          </button>
+            >
+              Watch All Products
+            </button>
+          </Link>
 
           <button
             className="

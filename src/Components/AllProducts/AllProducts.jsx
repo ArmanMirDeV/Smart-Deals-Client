@@ -26,10 +26,10 @@ const AllProducts = () => {
             <div className="h-48 bg-gray-100 rounded-md flex items-center justify-center overflow-hidden">
               {product.image ? (
                 <img
-                  //   src={product.image}
-                  src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&fm=jpg&q=60&w=3000"
+                    src={product.image}
+                
                   alt={product.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-fill"
                 />
               ) : (
                 <span className="text-gray-400 text-sm">No Image</span>
