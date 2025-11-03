@@ -67,6 +67,7 @@ const BidModal = ({ isOpen, onClose, product, onBidSuccess }) => {
                   Buyer Name
                 </label>
                 <input
+                  readOnly
                   type="text"
                   name="name"
                   defaultValue={user.displayName}
@@ -80,6 +81,7 @@ const BidModal = ({ isOpen, onClose, product, onBidSuccess }) => {
                   Buyer Email
                 </label>
                 <input
+                  readOnly
                   type="email"
                   defaultValue={user.email}
                   name="email"
@@ -96,7 +98,7 @@ const BidModal = ({ isOpen, onClose, product, onBidSuccess }) => {
               </label>
               <input
                 type="url"
-               
+                readOnly
                 name="imageUrl"
                 defaultValue={user.photoURL}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-purple-400 transition"
